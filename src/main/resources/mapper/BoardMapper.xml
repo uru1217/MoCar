@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.all.car.mapper.BoardMapper">
+
+    <select id="boardList" resultType="com.all.car.model.BoardModel">
+        select
+        boardId,
+        title,
+        content,
+        regiDate,
+        modiDate
+        from board
+        where 1=1
+        <include refid="criteria"/>
+        order by boardId desc
+        LIMIT #{cnt}, #{amount}
+    </select>
+
+    <insert id="boardInsert">
+        insert into board (
+        boardId,
+        title,
+        content,
+        regiDate,
+        modiDate,
+        user_userId
+        )
+        values (
+        #{boardId},
+        #{title},
+        #{content},
+        now(),
+        now(),
+        #{user_userId}
+        )
+    </insert>
+
+    <select id="boardRead" resultType="com.all.car.model.BoardModel">
+        select
+        boardId,
+        title,
+        content,
+        regiDate,
+        modiDate,
+        user_userId
+        from board
+        where boardId = #{boardId}
+    </select>
+
+    <update id="boardMod">
+    update board
+    set
+    title = #{title},
+    content = #{content},
+    modidate = now()
+     where boardId = #{boardId}
+    </update>
+
+    <delete id="boardDel">
+        delete from board
+        where boardId = #{boardId}
+    </delete>
+
+    <select id="totalCnt" resultType="int">
+        select count(*) as total from board where boardId > 0 <include refid="criteria"/>
+    </select>
+
+    <sql id="criteria">
+        <if test="type != null">
+            <if test="type == 't'.toString()">
+               and title like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'c'.toString()">
+                and content like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="type == 'w'.toString()">
+                and writer like CONCAT('%', #{keyword}, '%')
+            </if>
+        </if>
+    </sql>
+
+</mapper>
