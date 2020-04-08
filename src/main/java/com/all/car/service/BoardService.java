@@ -1,11 +1,13 @@
 package com.all.car.service;
 
 import com.all.car.model.BoardModel;
+import com.all.car.model.Criteria;
+import com.all.car.model.PageModel;
 
 import java.util.List;
 
 public interface BoardService {
-    List<BoardModel> boardList();
+    List<BoardModel> boardList(Criteria cri);
 
     int boardInsert(BoardModel boardModel);
 
@@ -14,4 +16,6 @@ public interface BoardService {
     int boardMod(BoardModel boardModel);
 
     int boardDel(int boardId);
+
+    int totalCnt(Criteria cri);
 }

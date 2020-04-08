@@ -2,6 +2,8 @@ package com.all.car.service;
 
 import com.all.car.mapper.BoardMapper;
 import com.all.car.model.BoardModel;
+import com.all.car.model.Criteria;
+import com.all.car.model.PageModel;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +22,8 @@ public class BoardServiceImpl implements BoardService {
 //    }
 
     @Override
-    public List<BoardModel> boardList() {
-        return boardMapper.boardList();
+    public List<BoardModel> boardList(Criteria cri) {
+        return boardMapper.boardList(cri);
     }
 
     @Transactional
@@ -43,5 +45,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public int boardDel(int boardId) {
         return boardMapper.boardDel(boardId);
+    }
+
+    @Override
+    public int totalCnt(Criteria cri) {
+        return boardMapper.totalCnt(cri);
     }
 }
