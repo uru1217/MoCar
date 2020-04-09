@@ -12,7 +12,7 @@
 
         <div class="col-lg-12">
             <label>
-                <h2>누카게시판</h2>
+                <h2> 자유게시판</h2>
             </label>
         </div>
 

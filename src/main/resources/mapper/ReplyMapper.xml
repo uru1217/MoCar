@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.all.car.mapper.ReplyMapper">
+
+    <select id="list" resultType="com.all.car.model.ReplyModel">
+        select replyId, replyContent, replyer, replyDate, replyUpdate from reply
+        where boardId = #{boardId}
+    </select>
+
+    <insert id="insert">
+        insert into reply (replyContent, replyer, replyDate, replyUpdate, boardId)
+        values (
+        #{replyContent},
+        #{replyer},
+        now(),
+        now(),
+        #{boardId}
+        )
+    </insert>
+
+    <update id="update">
+        update reply set
+        replyContent = #{replyContent},
+        replyDate = now()
+        where replyId = #{replyId}
+
+    </update>
+
+    <delete id="delete">
+        delete from reply
+        where replyId = #{replyId}
+    </delete>
+</mapper>

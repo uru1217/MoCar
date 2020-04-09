@@ -22,7 +22,7 @@
                             <!-- layer 1 -->
                             <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s"
                                  data-wow-delay=".2s">
-                                <h2 class="title1">모두를 만족할 누카</h2>
+                                <h2 class="title1">모두를 만족할 모카</h2>
                             </div>
                             <!-- layer 2 -->
                             <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
@@ -30,7 +30,7 @@
                             </div>
                             <!-- layer 3 -->
                             <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
-                                <a class="ready-btn right-btn page-scroll" href="/map">내 주변 누카</a>
+                                <a class="ready-btn right-btn page-scroll" href="/map">내 주변 모카</a>
                                 <a class="ready-btn page-scroll" href="/board/list">게시판</a>
                             </div>
                         </div>
