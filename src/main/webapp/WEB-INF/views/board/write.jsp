@@ -1,42 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<%@include file="../header.jsp"%>
+<%@include file="../header.jsp" %>
 
 <div class="container" style="margin-top: 10%">
     <div class="container-custom">
 
-        <div class="col-lg-12">
-            <form role="form" action="/board/write" method="post">
-                <div class="card-body">
-                    <div>
-                        <label>
-                            <h2><span>글작성</span></h2>
-                        </label>
-                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <form role="form" action="/board/write" method="post">
+                        <div class="card-body" style="margin: 3% 3% 3% 3%">
+                            <div class="form-group">
+                                <label>제&nbsp;&nbsp;목&nbsp;</label>
+                                <input class="form-control" name="title" placeholder="게시글 제목을 입력하세요" required="required">
+                            </div>
 
-                    <div>
-                        <label>
-                            <span>제&nbsp;&nbsp;목&nbsp;</span>
-                            <input type="text" name="title" class="ml-2" placeholder="게시글 제목을 입력하세요">
-                        </label>
-                    </div>
+                            <div class="form-group">
+                                <label>내&nbsp;&nbsp;용&nbsp;</label>
+                                <textarea name="content" class="form-control" style="height: 30rem"></textarea>
+                            </div>
 
-                    <div>
-                    <label>내용</label>
-                    <textarea name="content" style="width: 210px; height: 200px" ></textarea>
-                    </div>
-
-                    <input hidden="hidden" readonly="readonly" type="number" name="user_userId" value="1"/>
-                    <div>
-                        <button type="submit" class="btn btn-default">등록</button>
-                        <button type="reset" class="btn btn-default">초기화</button>
-                        <a href="/board/list"><button type="button">목록</button></a>
-                    </div>
+                            <input hidden="hidden" readonly="readonly" type="number" name="user_userId" value="1"/>
+                            <div>
+                                <button type="submit" class="btn btn-info">등록</button>
+                                <button type="reset" class="btn btn-warning">초기화</button>
+                                <a href="/board/list">
+                                    <button type="button" class="btn btn-default">목록</button>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 
-<%@include file="../footer.jsp"%>
+<%@include file="../footer.jsp" %>

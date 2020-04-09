@@ -41,6 +41,9 @@
     <%--  custom  --%>
     <link href="/css/custom.css" rel="stylesheet">
 
+    <%--alert 창--%>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
     <!-- =======================================================
       Theme Name: eBusiness
       Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
@@ -72,7 +75,7 @@
                             </button>
                             <!-- Brand -->
                             <a class="navbar-brand page-scroll sticky-logo" href="/index">
-                                <h1><span>누구나 카센터</span>_누카</h1>
+                                <h1><span>모두의 카센터</span>_모카</h1>
                                 <!-- Uncomment below if you prefer to use an image logo -->
                                 <!-- <img src="img/logo.png" alt="" title=""> -->
                             </a>

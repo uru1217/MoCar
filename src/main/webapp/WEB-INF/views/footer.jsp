@@ -37,10 +37,11 @@
 <script src="/lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
 <script src="/lib/appear/jquery.appear.js"></script>
 <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  <%--alert창--%>
 <%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>--%>
 
 
-<script src="/js/main.js"></script>
+<script src="/js/index.js"></script>
 </body>
 
 </html>
