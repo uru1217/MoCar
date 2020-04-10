@@ -47,7 +47,7 @@
   //Nivo slider
   //---------------------------------------------
   $('#ensign-nivoslider').nivoSlider({
-    effect: 'random',
+/*    effect: 'random',
     slices: 15,
     boxCols: 12,
     boxRows: 8,
@@ -57,7 +57,7 @@
     directionNav: true,
     controlNavThumbs: false,
     pauseOnHover: true,
-    manualAdvance: false,
+    manualAdvance: false,*/
   });
 
   /*----------------------------
@@ -106,10 +106,10 @@
   /*----------------------------
    Parallax
   ------------------------------ */
-  var well_lax = $('.wellcome-area');
+  /*var well_lax = $('.wellcome-area');
   well_lax.parallax("50%", 0.4);
   var well_text = $('.wellcome-text');
-  well_text.parallax("50%", 0.6);
+  well_text.parallax("50%", 0.6);*/
 
   /*--------------------------
    collapse
@@ -211,42 +211,9 @@
 
 })(jQuery);
 
-/* sweet alert 창*/
-const alert = function(msg, type) {
-  swal({
-    title : '',
-    text : msg,
-    type : type,
-    timer : 1500,
-    customClass : 'sweet-size',
-    showConfirmButton : false
-  });
-}
 
-const confirm = function(msg, title, resvNum) {
-  swal({
-    title : title,
-    text : msg,
-    type : "warning",
-    showCancelButton : true,
-    confirmButtonClass : "btn-danger",
-    confirmButtonText : "예",
-    cancelButtonText : "아니오",
-    closeOnConfirm : false,
-    closeOnCancel : true
-  }, function(isConfirm) {
-    if (isConfirm) {
-      swal('', '처리되었습니다.', "success");
-    }else{
-      swal('', '취소되었습니다.', "failed");
-    }
+$("#Log").on("click", function () {
 
-  });
-}
+$(".modal-content").load("/memberlogin")
 
-function Alert() {
-  alert('gg', 'success');
-}
-function Confirm() {
-  confirm('', '승인할까요?');
-}
+});

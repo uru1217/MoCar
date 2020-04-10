@@ -29,7 +29,7 @@ addBtn.on("click", function () {
 function showList(page) {
     $.ajax({
         type: "get",
-        url: "/replyList/" + boardId + "/" + page,
+        url: "/reply/replyList/" + boardId + "/" + page,
         success: (list) => {
             let str = "";
             if (list == null || list.length == 0) {
@@ -70,8 +70,8 @@ function deleteReply(replyId) {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                type: "delete",
-                url: "/replyDelete/" + replyId,
+                type: "post",
+                url: "/reply/replyDelete/" + replyId,
                 success: function () {
                     showList(1)
                     swalWithBootstrapButtons.fire(
@@ -112,12 +112,7 @@ function modifyReply(replyId) {
     $("#btnArea").html('<button id="modifyBtn" class="btn btn-info pull-right" style="margin-top: -40px">수정하기</button>')
 
     $("#modifyBtn").click(() => {
-            const data = {
-                replyId: replyId,
-                replyContent: content.val()
-            }
-
-            swalWithBootstrapButtons.fire({
+         swalWithBootstrapButtons.fire({
                 title: '수정하시겠습니까?',
                 text: "",
                 icon: 'warning',
@@ -127,9 +122,15 @@ function modifyReply(replyId) {
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
+
+                    const data = {
+                        replyId: replyId,
+                        replyContent: content.val()
+                    }
+
                     $.ajax({
                         type: "post",
-                        url: "/replyUpdate",
+                        url: "/reply/replyUpdate",
                         data: data,
                         success: function () {
                             content.val('');
@@ -173,7 +174,7 @@ function insert(data) {
         if (result.value) {
             $.ajax({
                 type: "post",
-                url: "/replyInsert",
+                url: "/reply/replyInsert",
                 data: data,
                 success: function () {
                     Swal.fire(
