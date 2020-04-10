@@ -1,3 +1,12 @@
+<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog mt-10">
+        <div class="modal-content" style="width: 65%">
+
+        </div>
+    </div>
+</div>
+
+
 <footer class="">
     <div class="footer-area-bottom">
         <div class="container">

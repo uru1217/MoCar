@@ -41,8 +41,10 @@
     <%--  custom  --%>
     <link href="/css/custom.css" rel="stylesheet">
 
-    <%--alert 창--%>
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+
+<%--alert 창--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
 
     <!-- =======================================================
       Theme Name: eBusiness
@@ -92,6 +94,10 @@
                                 </li>
                                 <li>
                                     <a href="/board/list">게시판</a>
+                                </li>
+                                <li>
+                                    <%--                                    <a href="#">Login</a>--%>
+                                    <a id="Log" data-toggle="modal" data-target="#modal">Login</a>
                                 </li>
                             </ul>
                         </div>

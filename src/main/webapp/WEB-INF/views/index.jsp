@@ -20,16 +20,15 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="slider-content">
                             <!-- layer 1 -->
-                            <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s"
-                                 data-wow-delay=".2s">
+                            <div class="layer-1-1 hidden-xs">
                                 <h2 class="title1">모두를 만족할 모카</h2>
                             </div>
                             <!-- layer 2 -->
-                            <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                            <div class="layer-1-2">
                                 <h1 class="title2">카센터의 필요한 모든 것을 제공합니다.</h1>
                             </div>
                             <!-- layer 3 -->
-                            <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                            <div class="layer-1-3 hidden-xs" >
                                 <a class="ready-btn right-btn page-scroll" href="/map">내 주변 모카</a>
                                 <a class="ready-btn page-scroll" href="/board/list">게시판</a>
                             </div>
