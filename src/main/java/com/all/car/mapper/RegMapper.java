@@ -6,4 +6,6 @@ public interface RegMapper {
     int insert(UserModel userModel);
 
     UserModel findByEmail(String email);
+
+    int checkEmail(String email);
 }

@@ -2,11 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <head>
     <meta charset="utf-8">
-    <title>eBusiness Bootstrap Template</title>
+    <title>모두의 카센터</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -42,8 +42,7 @@
     <link href="/css/custom.css" rel="stylesheet">
 
 
-
-<%--alert 창--%>
+    <%--alert 창--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css"/>
 
     <!-- =======================================================
@@ -52,6 +51,20 @@
       Author: BootstrapMade.com
       License: https://bootstrapmade.com/license/
     ======================================================= -->
+
+    <%--Session--%>
+    <sec:authorize access="isAuthenticated()">
+        <sec:authentication property="principal.userId" var="userId"/>
+        <sec:authentication property="principal.name" var="name"/>
+        <sec:authentication property="principal.password" var="password"/>
+        <sec:authentication property="principal.email" var="email"/>
+        <input id="sessionUserId" type="hidden" value="${userId}">
+        <input id="sessionName" type="hidden" value="${name}">
+        <input id="sessionPassword" type="hidden" value="${password}">
+        <input id="sessionEmail" type="hidden" value="${email}">
+    </sec:authorize>
+
+
 </head>
 
 
@@ -97,7 +110,12 @@
                                 </li>
                                 <li>
                                     <%--                                    <a href="#">Login</a>--%>
-                                    <a id="Log" data-toggle="modal" data-target="#modal">Login</a>
+                                    <sec:authorize access="isAnonymous()">
+                                        <a id="Log" data-toggle="modal" data-target="#modal">Login</a>
+                                    </sec:authorize>
+                                    <sec:authorize access="isAuthenticated()">
+                                        <a id="LogOut">LogOut</a>
+                                    </sec:authorize>
                                 </li>
                             </ul>
                         </div>

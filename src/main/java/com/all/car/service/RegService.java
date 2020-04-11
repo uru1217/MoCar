@@ -7,4 +7,6 @@ public interface RegService {
     int insert(UserModel userModel);
 
     UserModel findByEmail(String email);
+
+    int checkEmail(String email);
 }
