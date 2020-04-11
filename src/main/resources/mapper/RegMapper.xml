@@ -19,6 +19,12 @@
     </insert>
 
     <select id="findByEmail" resultType="com.all.car.model.UserModel">
-        select  userId,email,name,password from user where email = #{email}
+        select userId,email,name,password from user where email = #{email}
     </select>
+
+    <select id="checkEmail" resultType="int">
+        select count(email) from user where email = #{email}
+    </select>
+
+
 </mapper>

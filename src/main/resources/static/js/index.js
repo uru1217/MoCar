@@ -213,7 +213,9 @@
 
 
 $("#Log").on("click", function () {
-
-$(".modal-content").load("/memberlogin")
-
+  $(".modal-content").load("/memberlogin")
 });
+
+$("#LogOut").click(function () {
+  location.href="/regOut"
+})
