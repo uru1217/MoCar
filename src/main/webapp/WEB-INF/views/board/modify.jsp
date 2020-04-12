@@ -36,7 +36,7 @@
                             </div>
                             <input hidden="hidden" readonly="readonly" type="number" name="boardId"
                                    value='${board.boardId}'/>
-                            <input hidden="hidden" readonly="readonly" type="number" name="user_userId" value="1"/>
+                            <input hidden="hidden" readonly="readonly" type="number" name="userId" value="${board.userId}"/>
 
                             <div class="form-group mt-2">
                                 <button type="submit" data-oper="modify" class="btn btn-info">수정완료</button>

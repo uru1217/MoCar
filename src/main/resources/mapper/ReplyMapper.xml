@@ -5,18 +5,19 @@
 <mapper namespace="com.all.car.mapper.ReplyMapper">
 
     <select id="list" resultType="com.all.car.model.ReplyModel">
-        select replyId, replyContent, replyer, replyDate, replyUpdate from reply
+        select replyId, replyContent, replyer, replyDate, replyUpdate,userId from reply
         where boardId = #{boardId}
     </select>
 
     <insert id="insert">
-        insert into reply (replyContent, replyer, replyDate, replyUpdate, boardId)
+        insert into reply (replyContent, replyer, replyDate, replyUpdate, boardId, userId)
         values (
         #{replyContent},
         #{replyer},
         now(),
         now(),
-        #{boardId}
+        #{boardId},
+        #{userId}
         )
     </insert>
 

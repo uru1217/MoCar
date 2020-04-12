@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/map").permitAll()
 //                .antMatchers("/board/list/**").permitAll()
 //                .antMatchers("/board/get/**").permitAll()
-                .antMatchers("/reply/**").permitAll()
+                .antMatchers("/reply/**").authenticated()
 //                .antMatchers("/board/write/**").hasRole("member")
 //                .antMatchers("/board/modify/**").hasRole("member")
                 .antMatchers("/**/**").permitAll()

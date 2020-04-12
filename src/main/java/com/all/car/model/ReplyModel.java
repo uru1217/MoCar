@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class ReplyModel {
     private int replyId;
     private int boardId;
+    private int userId;
 
     private String replyContent;
     private String replyer;

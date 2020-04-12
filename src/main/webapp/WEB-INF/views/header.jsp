@@ -58,10 +58,10 @@
         <sec:authentication property="principal.name" var="name"/>
         <sec:authentication property="principal.password" var="password"/>
         <sec:authentication property="principal.email" var="email"/>
-        <input id="sessionUserId" type="hidden" value="${userId}">
-        <input id="sessionName" type="hidden" value="${name}">
-        <input id="sessionPassword" type="hidden" value="${password}">
-        <input id="sessionEmail" type="hidden" value="${email}">
+        <input id="sessionUserId" readonly type="hidden" value="${userId}">
+        <input id="sessionName" readonly type="hidden" value="${name}">
+        <input id="sessionPassword" readonly type="hidden" value="${password}">
+        <input id="sessionEmail" readonly type="hidden" value="${email}">
     </sec:authorize>
 
 

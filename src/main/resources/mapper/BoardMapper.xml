@@ -10,7 +10,8 @@
         title,
         content,
         regiDate,
-        modiDate
+        modiDate,
+        writer
         from board
         where 1=1
         <include refid="criteria"/>
@@ -20,20 +21,20 @@
 
     <insert id="boardInsert">
         insert into board (
-        boardId,
         title,
         content,
         regiDate,
         modiDate,
-        user_userId
+        userId,
+        writer
         )
         values (
-        #{boardId},
         #{title},
         #{content},
         now(),
         now(),
-        #{user_userId}
+        #{userId},
+        #{writer}
         )
     </insert>
 
@@ -44,7 +45,8 @@
         content,
         regiDate,
         modiDate,
-        user_userId
+        userId,
+        writer
         from board
         where boardId = #{boardId}
     </select>

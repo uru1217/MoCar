@@ -30,7 +30,7 @@
                             <button id="move" type="button" class="btn btn-info pull-right">수정하기</button>
                         </div>
 
-                        <input hidden="hidden" readonly="readonly" type="number" name="user_userId" value="1"/>
+                        <input readonly="readonly" type="hidden" name="userId" id="userId" value='${board.userId}'/>
                     </div>
                 </div>
 

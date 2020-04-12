@@ -9,7 +9,8 @@ public class BoardModel {
     private int boardId;
     private String title;
     private String content;
+    private String writer;
     private Timestamp regiDate;
     private Timestamp modiDate;
-    private int user_userId;
+    private int userId;
 }

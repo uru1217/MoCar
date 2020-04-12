@@ -22,34 +22,34 @@ public class BoardController {
     }
 
     //동록
-    @RequestMapping(value="/write", method = RequestMethod.GET)
+    @RequestMapping(value = "/write", method = RequestMethod.GET)
     public String write() {
         return "board/write";
     }
 
     //등록처리
-    @RequestMapping(value="/write", method = RequestMethod.POST)
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
     public String write(BoardModel boardModel, RedirectAttributes redirectAttributes) {
-//        System.out.println(boardModel);
         boardService.boardInsert(boardModel);
-        redirectAttributes.addFlashAttribute("msg","regSuccess");
+        redirectAttributes.addFlashAttribute("msg", "regSuccess");
         return "redirect:/board/list";
     }
 
     //목록
-    @RequestMapping(value="/list", method=RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model, Criteria cri) {
 //        System.out.println(boardService.boardList());
         model.addAttribute("board", boardService.boardList(cri));
         int total = boardService.totalCnt(cri);
-        System.out.println(new PageModel(cri,total));
-        model.addAttribute("pageMaker", new PageModel(cri,total));
+        System.out.println(new PageModel(cri, total));
+        model.addAttribute("pageMaker", new PageModel(cri, total));
         return "/board/list";
     }
 
     //조회
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public String get(@RequestParam("boardId") int boardId, Model model, @ModelAttribute("cri") Criteria cri) {
+        System.out.println(boardService.boardRead(boardId));
         model.addAttribute("board", boardService.boardRead(boardId));
         return "/board/get";
     }
@@ -57,8 +57,8 @@ public class BoardController {
     //수정 페이지이동
     //                        <a href="/board/modify"><button type="button">수정</button></a>
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
-    public String modify(@RequestParam("boardId") int boardId, Model model,  @ModelAttribute("cri") Criteria cri) {
-        model.addAttribute("board",boardService.boardRead(boardId));
+    public String modify(@RequestParam("boardId") int boardId, Model model, @ModelAttribute("cri") Criteria cri) {
+        model.addAttribute("board", boardService.boardRead(boardId));
         return "/board/modify";
     }
 
@@ -68,7 +68,7 @@ public class BoardController {
 //        System.out.println(boardModel);
 //        boardService.boardMod(boardModel);
 //        redirectAttributes.addFlashAttribute("msg", " regSuccess");
-        if(boardService.boardMod(boardModel) == 1) {
+        if (boardService.boardMod(boardModel) == 1) {
             redirectAttributes.addFlashAttribute("result", "success");
         }
         redirectAttributes.addAttribute("pageNum", cri.getPageNum());
@@ -80,9 +80,9 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public String remove(@RequestParam("boardId") int boardId, RedirectAttributes redirectAttributes, @ModelAttribute("cri") Criteria cri){
+    public String remove(@RequestParam("boardId") int boardId, RedirectAttributes redirectAttributes, @ModelAttribute("cri") Criteria cri) {
 
-        if(boardService.boardDel(boardId) == 1) {
+        if (boardService.boardDel(boardId) == 1) {
             redirectAttributes.addFlashAttribute("result", "success");
         }
         redirectAttributes.addAttribute("pageNum", cri.getPageNum());

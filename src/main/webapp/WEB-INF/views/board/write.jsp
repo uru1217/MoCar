@@ -21,7 +21,12 @@
                                 <textarea name="content" class="form-control" style="height: 30rem"></textarea>
                             </div>
 
-                            <input hidden="hidden" readonly="readonly" type="number" name="user_userId" value="1"/>
+                            <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="principal.userId" var="userId"/>
+                                <input id="userId" name="userId" readonly type="hidden" value="${userId}">
+                                <sec:authentication property="principal.name" var="name"/>
+                                <input id="writer" name="writer" readonly type="hidden" value="${name}">
+                            </sec:authorize>
                             <div>
                                 <button type="submit" class="btn btn-info">등록</button>
                                 <button type="reset" class="btn btn-warning">초기화</button>

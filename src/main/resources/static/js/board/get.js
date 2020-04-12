@@ -6,10 +6,23 @@ const boardId = $("#boardId").val();
 const page = 1;
 const replyUL = $(".chat");
 const content = $("#content");
+const userId = $("#userId").val();
+const sessionUserId = $("#sessionUserId").val();
+const sessionName = $("#sessionName").val();
 
+if (userId !== sessionUserId) {
+    move.hide();
+}
+
+
+//form 형식 관련
 move.on("click", function () {
-    operForm.attr("action", "/board/modify").submit();
-    //form 형식 관련
+    alert(userId + "eeeee" + sessionUserId)
+    if (userId === sessionUserId) {
+        operForm.attr("action", "/board/modify").submit();
+    } else {
+        alert("너 아님")
+    }
 });
 
 go.on("click", function () {
@@ -19,9 +32,10 @@ go.on("click", function () {
 
 addBtn.on("click", function () {
     const data = {
-        replyer: "replyer",
+        replyer: sessionName,
         replyContent: content.val(),
-        boardId: boardId
+        boardId: boardId,
+        userId: sessionUserId
     };
     insert(data);
 });
@@ -37,11 +51,18 @@ function showList(page) {
                 return;
             }
             for (let i = 0, len = list.length || 0; i < len; i++) {
-                str += "<li class='left clearfix' data-replyId='" + list[i].replyId + "'>";
-                str += " <div><div class='header'><strong class='primary-font'>" + list[i].replyer + "</strong>";
-                str += "<span class='modi' style='margin-left: 15px; font-size: small' onclick='modifyReply(" + list[i].replyId + ")'>[수정</span>][<span class='del' style='font-size: small' onclick='deleteReply(" + list[i].replyId + ")'>삭제]</span >";
-                str += "  <small class='pull-right text-muted mr-3'>" + list[i].replyDate + "</small></div>";
-                str += "<p id='" + list[i].replyId + "'>" + list[i].replyContent + "</p></div></li><hr/>";
+                if (Number(list[i].userId) === Number(sessionUserId)) {
+                    str += "<li class='left clearfix' data-replyId='" + list[i].replyId + "'>";
+                    str += " <div><div class='header'><strong class='primary-font'>" + list[i].replyer + "</strong>";
+                    str += "<span class='modi' style='margin-left: 15px; font-size: small' onclick='modifyReply(" + list[i].replyId + ")'>[수정</span>][<span class='del' style='font-size: small' onclick='deleteReply(" + list[i].replyId + ")'>삭제]</span >";
+                    str += "  <small class='pull-right text-muted mr-3'>" + list[i].replyDate + "</small></div>";
+                    str += "<p id='" + list[i].replyId + "'>" + list[i].replyContent + "</p></div></li><hr/>";
+                } else {
+                    str += "<li class='left clearfix' data-replyId='" + list[i].replyId + "'>";
+                    str += " <div><div class='header'><strong class='primary-font'>" + list[i].replyer + "</strong>";
+                    str += "  <small class='pull-right text-muted mr-3'>" + list[i].replyDate + "</small></div>";
+                    str += "<p id='" + list[i].replyId + "'>" + list[i].replyContent + "</p></div></li><hr/>";
+                }
             }
 
             replyUL.html(str);
@@ -112,51 +133,49 @@ function modifyReply(replyId) {
     $("#btnArea").html('<button id="modifyBtn" class="btn btn-info pull-right" style="margin-top: -40px">수정하기</button>')
 
     $("#modifyBtn").click(() => {
-         swalWithBootstrapButtons.fire({
-                title: '수정하시겠습니까?',
-                text: "",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: '수정하기',
-                cancelButtonText: '취소',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
+        swalWithBootstrapButtons.fire({
+            title: '수정하시겠습니까?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '수정하기',
+            cancelButtonText: '취소',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
 
-                    const data = {
-                        replyId: replyId,
-                        replyContent: content.val()
-                    }
-
-                    $.ajax({
-                        type: "post",
-                        url: "/reply/replyUpdate",
-                        data: data,
-                        success: function () {
-                            content.val('');
-                            $("#btnArea").html('<button id="addBtn" class="btn btn-info pull-right" style="margin-top: -40px">등록하기</button>')
-                            showList(1);
-                            swalWithBootstrapButtons.fire(
-                                '수정하였습니다',
-                                '',
-                                'success'
-                            )
-                        }
-                    })
-                } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire(
-                        '취소하였습니다',
-                        '',
-                        'error'
-                    )
+                const data = {
+                    replyId: replyId,
+                    replyContent: content.val()
                 }
-            })
 
-        }
-    )
+                $.ajax({
+                    type: "post",
+                    url: "/reply/replyUpdate",
+                    data: data,
+                    success: function () {
+                        content.val('');
+                        $("#btnArea").html('<button id="addBtn" class="btn btn-info pull-right" style="margin-top: -40px">등록하기</button>')
+                        showList(1);
+                        swalWithBootstrapButtons.fire(
+                            '수정하였습니다',
+                            '',
+                            'success'
+                        )
+                    }
+                })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    '취소하였습니다',
+                    '',
+                    'error'
+                )
+            }
+        })
+    })
 
 };
 

@@ -33,7 +33,7 @@
                         <td><c:out value="${list.boardId}"/></td>
                         <td><a class='move' href='<c:out value="${list.boardId}" />'><c:out
                                 value="${list.title}"/></a></td>
-                        <td></td>
+                        <td><c:out value="${list.writer}"/></td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regiDate}"/></td>
                     </tr>
                 </c:forEach>
